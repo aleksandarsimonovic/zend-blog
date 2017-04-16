@@ -1,0 +1,38 @@
+<div class="content-box-large">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Message</th>         
+                        <th>Date</th> 
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <?php foreach ($this->paginator as $paginator) : ?>
+                    <tr>
+                        <td><?php echo $this->escape($paginator->name); ?></td>
+                        <td><?php echo $this->escape($paginator->subject); ?></td>
+                        <td><?php echo $this->escape($paginator->message); ?></td>
+                        <td><?php echo $this->escape(date('d/m/Y H:i:s', strtotime($paginator->date))); ?></td>
+                        <td><a class="glyphicon glyphicon-remove" href="<?php echo $this->url(array('controller' => 'administration', 'action' => 'deletemessages', 'id' => $paginator->id)); ?>">Delete</a></td>
+                    </tr>
+                <?php endforeach; ?>
+
+            </table>
+            <div class="col-sm-6">
+           
+                <div>
+                    <ul class="pagination">
+                            <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?>
+                    </ul>
+                </div>
+
+
+
+            </div><!-- /.span -->
+        </div>
+    </div>
+</div>

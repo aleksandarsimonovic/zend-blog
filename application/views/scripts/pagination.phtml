@@ -1,0 +1,25 @@
+<?php
+
+if (isset($this->first)) {
+    echo '<li><a href="' . $this->url(array('page' => $this->first)) . '"> First </a> </li>   ';
+} else {
+    echo ' << ';
+}
+
+echo '<li><a href="' . $this->url(array('page' => $this->previous)) . '"> Previous </a> </li>   ';
+
+foreach ($this->pagesInRange as $page) {
+    if ($this->current != $page) {
+        echo '<li><a href="' . $this->url(array('page' => $page)) . '">' . $page . '</a> </li>  ';
+    } else {
+        echo '<li class="active"><a>' . $page . '</a></li>   ';
+    }
+}
+
+echo '<li><a href="' . $this->url(array('page' => $this->next)) . '"> Next </a> </li>   ';
+
+if (isset($this->last)) {
+    echo '<li><a href="' . $this->url(array('page' => $this->last)) . '"> Last </a> </li>   ';
+} else {
+    echo ' >> ';
+}

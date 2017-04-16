@@ -1,0 +1,123 @@
+<div class="container">
+    <div class="row">
+
+
+
+        <div class="col-sm-8 blog-main">
+            <?php if (!empty($this->articles)): ?>
+                <?php foreach ($this->paginator as $post): ?>			
+                    <div class="blog-post">
+                        <a href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'details', 'id' => $post['id'])); ?>">
+                            <h3 class="blog-post-title"><?php print $this->escape($post['subject']); ?></h3></a>
+
+                        <i class="icon-user"></i> Posted by <a href="#">Admin</a> 
+                        | on <i class="icon-calendar"></i> <?php print $this->escape(date('d m Y H:i:s', strtotime($post['date']))); ?> 
+                        <i class="fa fa-calendar"></i>
+                        <blockquote><i class="icon-tags"></i> Tags : 
+                            <span class="label label-info"><?php print $this->escape($post['tags']); ?></span></blockquote>
+                        <p>   <?php print substr(htmlspecialchars_decode($this->escape(htmlspecialchars_decode($post['body']))), 0, 300); ?> ...</p>
+                    </div><!-- /.blog-post -->
+
+
+
+
+                    <a class="btn btn-default" href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'details', 'id' => $post['id'])); ?>#disqus_thread">Details</a>
+
+
+
+
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li> <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?></li>
+                </ul>
+            </nav>
+        </div><!-- /.blog-main -->
+
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+            <div class="sidebar-module">
+                <h3>Search posts</h3>
+                <?php echo $this->pretragaform; ?>
+
+                <?php if (!empty($this->results)): ?>
+                    <?php foreach ($this->results as $post): ?>
+
+
+                        <article class="mini-post">
+                            <header>
+                                <h3>  <?php print $this->escape($post['subject']); ?></h3>
+                                <?php print substr(htmlspecialchars_decode($this->escape(htmlspecialchars_decode($post['body']))), 0, 200); ?> ...
+
+
+                                <br> <a class="btn btn-default" href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'details', 'id' => $post['id'])); ?>" class="btn btn-default">Detaljnije</a>                           </header>
+
+                        </article>
+
+
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+
+                <h3>Latest posts</h3>
+                <?php if (!empty($this->articles)): ?>
+                    <?php foreach ($this->articles2 as $post2): ?>
+
+                        <div class="media">
+                            <a href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'details', 'id' => $post2['id'])); ?>">
+
+
+                                <div class="media-body">
+                                    <h5 class="mt-0">  <?php print $this->escape($post2['subject']); ?></a></h5>
+                                    <?php print substr(htmlspecialchars_decode($this->escape(htmlspecialchars_decode($post2['body']))), 0, 75); ?>
+                                </div>
+                                <?php // print date('d/m/Y', strtotime($this->escape($post2['date']))); ?>
+                        </div>
+
+
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+            </div>
+        </div>  </div>
+
+
+</div><!-- /.blog-sidebar -->
+</div><!-- /.row -->
+
+</div><!-- /.container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

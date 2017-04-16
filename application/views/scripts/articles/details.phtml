@@ -1,0 +1,125 @@
+<div class="container">
+
+
+    <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+            <div class="blog-post">
+                <h2 class="blog-post-title"><?php print $this->escape($this->articles['subject']); ?></h2>
+                <p class="blog-post-meta"><?php print $this->escape($this->articles['date']); ?> <a href="#">Admin</a></p>
+                <a class="image featured"><img class="img-responsive" src="<?= $this->baseUrl('../images/article-images/') ?><?php print $this->escape($this->articles['image_name']); ?>" alt=""></a>
+                </br>
+                <?php print htmlspecialchars_decode($this->escape(htmlspecialchars_decode($this->articles['body']))); ?> 
+            </div><!-- /.blog-post -->
+
+
+
+            <div id="disqus_thread"></div>
+            <script>
+
+
+                (function () {
+                    var d = document, s = d.createElement('script');
+                    s.src = '//wt-cms.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+            <div class="sidebar-module">
+                <h3>Search posts</h3>
+                <?php echo $this->pretragaform; ?>
+
+                <?php if (!empty($this->results)): ?>
+                    <?php foreach ($this->results as $post): ?>
+
+
+                        <article class="mini-post">
+
+                            <h3>  <?php print $this->escape($post['subject']); ?></h3>
+                            <?php print substr(htmlspecialchars_decode($this->escape(htmlspecialchars_decode($post['body']))), 0, 200); ?>...
+                            <br> <a class="btn btn-default" href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'details', 'id' => $post['id'])); ?>" class="btn btn-default">Detaljnije</a>
+
+
+                        </article>
+
+
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+
+
+
+                <h3>Latest posts</h3>
+                <?php if (!empty($this->articles)): ?>
+                    <?php foreach ($this->articles2 as $post2): ?>
+
+                        <div class="media">
+                            <a href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'details', 'id' => $post2['id'])); ?>">
+
+                                <div class="media-body">
+                                    <h5 class="mt-0">  <?php print $this->escape($post2['subject']); ?></a></h5>
+                                    <?php print substr(htmlspecialchars_decode($this->escape(htmlspecialchars_decode($post2['body']))), 0, 75); ?>
+                                </div>
+
+                        </div>
+
+
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+
+            </div>
+        </div>  </div>
+
+
+</div><!-- /.blog-sidebar -->
+
+
+
+</div><!-- /.row -->
+
+</div><!-- /.container -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

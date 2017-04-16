@@ -1,0 +1,14 @@
+<div class="content-box-large">
+    <div class="panel-body">
+        <p>Are u sure u want to delete message sent by
+            '<?php echo $this->escape($this->messages['name']); ?>'
+        </p>
+        <form action="<?php echo $this->url(array('action' => 'deletemessages')); ?>" method="post">
+            <div>
+                <input type="hidden" name="id" value="<?php echo $this->messages['id']; ?>" />
+                <input type="submit" name="del" value="Yes" />
+                <input type="submit" name="del" value="No" />
+            </div>
+        </form>
+    </div>
+</div>

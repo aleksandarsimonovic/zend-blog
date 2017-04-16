@@ -1,0 +1,45 @@
+<div class="content-box-large">
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+
+                        <th>Username</th>
+
+
+                        <th>Email address</th>
+
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <?php foreach ($this->paginator as $paginator) : ?>
+                    <tr>
+                        <td><?php echo $this->escape($paginator->username); ?></td>
+                        <td><?php echo $this->escape($paginator->email); ?></td>
+                        <td><a class="glyphicon glyphicon-edit" href="<?php echo $this->url(array('controller' => 'administration', 'action' => 'editusers', 'id' => $paginator->id)); ?>">Edit</a></td>
+                        <td><a class="glyphicon glyphicon-remove" href="<?php echo $this->url(array('controller' => 'administration', 'action' => 'deleteusers', 'id' => $paginator->id)); ?>">Delete</a></td>
+                    </tr>
+                <?php endforeach; ?>
+                    
+            </table>
+            <div class="col-sm-6">
+           
+                <div>
+                    <ul class="pagination">
+                       
+                            <?php echo $this->paginationControl($this->paginator, 'Sliding', 'pagination.phtml'); ?>
+               
+
+
+                    </ul>
+                </div>
+
+
+
+            </div><!-- /.span -->
+             
+        </div>
+    </div>
+</div>

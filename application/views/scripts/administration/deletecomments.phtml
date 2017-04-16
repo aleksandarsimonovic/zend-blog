@@ -1,0 +1,14 @@
+<div class="content-box-large">
+    <div class="panel-body">
+        <p>Are u sure u want to delete comment posted by user
+            '<?php echo $this->escape($this->comments['name']); ?>'
+        </p>
+        <form action="<?php echo $this->url(array('action' => 'deletecomments')); ?>" method="post">
+            <div>
+                <input type="hidden" name="id" value="<?php echo $this->comments['id']; ?>" />
+                <input type="submit" name="del" value="Yes" />
+                <input type="submit" name="del" value="No" />
+            </div>
+        </form>
+    </div>
+</div>
